@@ -1,0 +1,14 @@
+<mat-toolbar class="custom-color">
+  <mat-toolbar-row>
+    Delete User
+    <span fxFlex></span>
+    <mat-icon style="cursor: pointer;" (click)="onCloseDialog()">close</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+<h3 mat-dialog-title>Are you sure delete <br> this user?</h3>
+<div class="divLeft" mat-dialog-actions>
+  <div>
+    <button mat-raised-button class="custom-color" [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+    <button mat-raised-button (click)="onCloseDialog()" tabindex="-1">Cancel</button>
+  </div>
+</div>

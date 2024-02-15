@@ -1,0 +1,20 @@
+{
+  "user": [
+    {
+      "name": "shrree",
+      "phone": "2222222222",
+      "email": "fdfdf@gmail.com",
+      "gender": "female",
+      "position": "web developer",
+      "id": 32
+    },
+    {
+      "name": "praful",
+      "phone": "1111111111",
+      "email": "1111@gmail.com",
+      "gender": "male",
+      "position": "web developer",
+      "id": 33
+    }
+  ]
+}

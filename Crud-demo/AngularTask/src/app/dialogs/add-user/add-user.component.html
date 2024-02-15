@@ -1,0 +1,92 @@
+<form [formGroup]="form" class="mat-dialog-content" (ngSubmit)="submit()">
+    <mat-toolbar [ngClass]="{'backColor':type == 'add', 'orangeColor' : type == 'edit' }">
+        <mat-toolbar-row>
+            <span *ngIf="type == 'add'"> Add User</span>
+            <span *ngIf="type == 'edit'"> Edit User</span>
+            <span fxFlex></span>
+            <mat-icon style="cursor: pointer;" (click)="onCloseDialog()">close</mat-icon>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="tab-content container mt-2">
+        <div class="content-container tab-content-height ">
+            <div>
+                <label for="">Name</label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="inputWidth" >
+                    <input matInput formControlName="name" placeholder="Enter name">
+                    <mat-error *ngIf="form.get('name')?.hasError('required')">Name is required</mat-error>
+                    <mat-error *ngIf="form.get('name')?.hasError('noLeadingTrailingSpaces')">
+                        Name should not have leading or trailing spaces
+                    </mat-error>
+                </mat-form-field>
+            </div>
+
+            <div>
+                <label for="">Email</label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="inputWidth" style="width: 100%;">
+                    <input matInput formControlName="email" placeholder="Enter email">
+                    <mat-error *ngIf="form.get('email')?.hasError('required')">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('email')?.hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+
+                    <mat-error *ngIf="form.get('email')?.hasError('emailTaken')">
+                        Email is already taken
+                    </mat-error>
+                </mat-form-field>
+
+            </div>
+            <div>
+                <label for="">Phone</label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="inputWidth" style="width: 100%;">
+                    <input matInput formControlName="phone" placeholder="Enter phone">
+                    <mat-error *ngIf="form.get('phone')?.hasError('required')">
+                        Phone is required
+                    </mat-error>
+                    <mat-error *ngIf="form.get('phone')?.hasError('pattern')">
+                        Please enter a valid phone
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <label for="">Gender</label>
+            </div>
+            <div>
+                <mat-radio-group aria-label="Select a gender" formControlName="gender">
+                    <mat-radio-button value="male">Male</mat-radio-button>
+                    <mat-radio-button value="female">Female</mat-radio-button>
+                    <mat-radio-button value="other">Other</mat-radio-button>
+                </mat-radio-group>
+                <mat-error *ngIf="form.get('gender')?.hasError('required')&& formSubmitted ">
+                    Gender is required
+                </mat-error>
+            </div>
+            <div>
+                <label for="">Position</label>
+            </div>
+            <div>
+                <mat-form-field appearance="outline" class="inputWidth">
+                    <mat-select formControlName="position" placeholder="Enter position">
+                        <mat-option value="web developer">Web developer </mat-option>
+                        <mat-option value="backend developer">Backend developer</mat-option>
+                        <mat-option value="full stack developer">Full stack developer</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="form.get('position')?.hasError('required')">
+                        Position is required
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div mat-dialog-actions>
+                <button mat-raised-button [ngClass]="{'backColor':type == 'add', 'orangeColor' : type == 'edit' }"
+                    type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
